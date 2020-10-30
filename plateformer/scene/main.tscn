@@ -1,8 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scene/plateform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/plateform.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=3]
+resource_name = "horizontale"
+length = 2.0
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 320, 24 ), Vector2( 320, 148 ), Vector2( 320, 272 ), Vector2( 320, 148 ), Vector2( 320, 24 ) ]
+}
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -48,7 +66,10 @@ script = ExtResource( 3 )
 position = Vector2( 512, 328 )
 
 [node name="plateform5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 320, 136 )
+position = Vector2( 320, 131.104 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plateform5"]
+anims/horizontale = SubResource( 3 )
 
 [node name="plateform6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 208, 360 )
@@ -60,7 +81,7 @@ position = Vector2( 64, 416 )
 curve = SubResource( 1 )
 
 [node name="horizontale" parent="." instance=ExtResource( 1 )]
-position = Vector2( 505.422, 528 )
+position = Vector2( 564.821, 528 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="horizontale"]
 anims/horizontale = SubResource( 2 )
